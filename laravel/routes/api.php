@@ -5,15 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProjectController;
+use App\Http\Middleware\RequestNumMiddleware;
 
 Route::prefix('users')->group(function () {
     Route::post('/', [UserController::class, 'create']);
     Route::get('/{id}', [UserController::class, 'read']);
     Route::put('/{id}', [UserController::class, 'update']);
     Route::delete('/{id}', [UserController::class, 'destroy']);
-});
+})->middleware([RequestNumMiddleware::class]);
 
-// Project Routes
 Route::prefix('projects')->group(function () {
     Route::post('/', [ProjectsController::class, 'create']);
     Route::get('/', [ProjectsController::class, 'read']);
