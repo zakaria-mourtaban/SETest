@@ -8,11 +8,11 @@ use App\Http\Controllers\UserProjectController;
 use App\Http\Middleware\RequestNumMiddleware;
 
 Route::prefix('users')->group(function () {
-    Route::post('/', [UserController::class, 'create']);
-    Route::get('/{id}', [UserController::class, 'read']);
-    Route::put('/{id}', [UserController::class, 'update']);
-    Route::delete('/{id}', [UserController::class, 'destroy']);
-})->middleware([RequestNumMiddleware::class]);
+	Route::post('/', [UserController::class, 'create']);
+	Route::get('/{id}', [UserController::class, 'read']);
+	Route::put('/{id}', [UserController::class, 'update']);
+	Route::delete('/{id}', [UserController::class, 'destroy']);
+});
 
 Route::prefix('projects')->group(function () {
     Route::post('/', [ProjectsController::class, 'create']);
@@ -27,4 +27,4 @@ Route::prefix('/user-project')->group(function () {
 	Route::get('/{id}', [UserProjectController::class, 'readById']);
     Route::put('/update/{id}', [UserProjectController::class, 'update']);
     Route::delete('/delete/{id}', [UserProjectController::class, 'destroy']);
-});
+})->middleware([RequestNumMiddleware::class]);
